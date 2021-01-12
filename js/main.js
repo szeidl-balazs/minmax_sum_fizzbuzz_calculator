@@ -1,7 +1,7 @@
 const hECMAthlon = {
 
     getMaxValue: function (input) {
-        var maxValues = input.split(",");
+        var maxValues = input.split(",");                   
         var maxValue = 0;
         for(var i = 0; i < maxValues.length; i++){
             var tempValue = parseInt(maxValues[i]);
