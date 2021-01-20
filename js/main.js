@@ -1,40 +1,29 @@
-const hECMAthlon = {
+class HECMAthlon {
 
-    getMaxValue: function (input) {
-        var maxValues = input.split(",");                   
-        var maxValue = 0;
-        for(var i = 0; i < maxValues.length; i++){
-            var tempValue = parseInt(maxValues[i]);
-            if (tempValue > maxValue) {
-                maxValue = tempValue;
-            }
-        }
-        return [maxValue];
-    },
+    greaterValues = [];
 
-    getGreaterThan: function (input) {
-        var greaterValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        var greaterNums = [];
-        for(var j = 0; j < greaterValues.length; j++) {
-            if (greaterValues[j] > parseInt(input)) {
-                greaterNums.push(greaterValues[j]);
-            }
-        }
-        return greaterNums;
-    },
-
-    fizzBuzz: function (input) {
-        var output = [];
-        for (var k = 1; k <= parseInt(input); k++) {
-            var value;
-            if(k % 3 === 0) value = "Fizz";
-            else if(k % 5 === 0) value = "Buzz";
-            else if(k % 5 === 0 && k % 3 === 0) value = "FizzBuzz";
-            else value = k;
-            output.push(value);
-        }
-        return output;
+    constructor(inputArr) {
+        this.greaterValues = inputArr;
     }
+    
+    getMaxValue(input) {
+        
+        return input.split(',').reduce((acc, value) => [Math.max(acc, value)]);
+    }
+    
+    
+    getGreaterThan = input => {
+        return this.greaterValues.filter(greaterNums => greaterNums >= input);
+    }
+
+    fizzBuzz = input => {
+        let numberArr = Array(parseInt(input)).fill().map((_, i) => i+1);
+        return numberArr.map(x => x % 3 === 0 && x % 5 === 0 
+            ? "FizzBuzz" 
+            : x % 3 === 0 ? "Fizz" : x % 5 === 0 ? "Buzz" : x);
+    }
+    
+     
 }
 
-export default hECMAthlon;
+export default HECMAthlon;

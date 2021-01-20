@@ -1,42 +1,43 @@
-import hECMAthlon from "./main.js"
+import HECMAthlon from "./main.js"
 
 function init() {
-    let maxValueBtn = document.querySelector(".maxValue__btn");                 /*Max value button*/
-    let greaterThanBtn = document.querySelector(".greaterThan__btn");           /*Greater than button*/
-    let fizzBuzzBtn = document.querySelector(".fizzBuzz__btn");                  /*fizz button*/
+    const maxValueBtn = document.querySelector(".maxValue__btn");
+    const greaterThanBtn = document.querySelector(".greaterThan__btn");
+    const fizzBuzzBtn = document.querySelector(".fizzBuzz__btn");
 
-    let maxValueInput = document.querySelector(".maxValue__input");
-    let greaterThanInput = document.querySelector(".greaterThan__input");
-    let fizzBuzzInput = document.querySelector(".fizzBuzz__input");
+    const maxValueInput = document.querySelector(".maxValue__input");
+    const greaterThanInput = document.querySelector(".greaterThan__input");
+    const fizzBuzzInput = document.querySelector(".fizzBuzz__input");
 
-    let maxValueRoot = document.querySelector(".maxValue__container");
-    let greaterThanRoot = document.querySelector(".greaterThan__container");
-    let fizzBuzzRoot = document.querySelector(".fizzBuzz__container");
+    const maxValueRoot = document.querySelector(".maxValue__container");
+    const greaterThanRoot = document.querySelector(".greaterThan__container");
+    const fizzBuzzRoot = document.querySelector(".fizzBuzz__container");
+
+    let inputArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const newHechmatlon = new HECMAthlon(inputArr);
 
     maxValueBtn.addEventListener('click', () => {
-        let maxValue = getOutput(hECMAthlon.getMaxValue(maxValueInput.value));
+        let maxValue = getOutput(newHechmatlon.getMaxValue(maxValueInput.value));
         logResult(maxValueRoot, maxValue);
     });
     greaterThanBtn.addEventListener('click', () => {
-        let greaterValues = getOutput(hECMAthlon.getGreaterThan(greaterThanInput.value));
+        let greaterValues = getOutput(newHechmatlon.getGreaterThan(greaterThanInput.value));
         logResult(greaterThanRoot, greaterValues);
     });
     fizzBuzzBtn.addEventListener('click', () => {
-        let result = getOutput(hECMAthlon.fizzBuzz(fizzBuzzInput.value));
+        let result = getOutput(newHechmatlon.fizzBuzz(fizzBuzzInput.value));
         logResult(fizzBuzzRoot, result);
     });
 }
 
 function getOutput(output) {
-    let returnValue = ["The function starts"];
-    for(let i = 0; i < output.length; i++){
-        returnValue.push(output[i]);
-    }
-    returnValue.push("The function ends");
-    return returnValue;
+   
+    return ["The function starts", ...output, "The function ends"];
+    console.log(output);
 }
 
-function logResult(place, values){
+
+ const logResult = (place, values) => {
     while(place.firstChild) {
         place.firstChild.remove();
     }
